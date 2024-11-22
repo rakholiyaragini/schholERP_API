@@ -17,8 +17,8 @@ The SchoolERP API is a backend application designed to manage school-related ope
 ## Features
 
 ### User Authentication
-- **Sign-Up**: Users can create an account with their details.
-- **Sign-In**: Users can log in and receive a JWT for secure access.
+- **SignUp**: Users can create an account with their details.
+- **login**: Users can log in and receive a JWT for secure access.
 - **Role-Based Access**: Different access levels for Master, Principal, and Teacher roles.
 
 ### User Management
@@ -80,17 +80,17 @@ The project requires the following environment variables:
 ### Usage
 Once the server is running, you can interact with the API using tools like Postman. Here are the main steps to use the API:
 
-- **Sign-Up** : Register users with their name, email, password, and role (Master, Principal, or Teacher).
-- **Sign-In** : Authenticate users and retrieve a JWT token.
+- **Signup** : Register users with their name, email, password, and role (Master, Principal, or Teacher).
+- **login** : Authenticate users and retrieve a JWT token.
 - **Role-Based Actions**: Access restricted routes based on user roles after authentication.
 
 ### API Endpoints
 
 ## Authentication
 
-# Sign-Up
+# Signup
 
-- **Endpoint**: /signUp
+- **Endpoint**: /auth/signup : Create a new user account.
 - **Method**: POST
 - **Payload**:
 ```bash
@@ -102,8 +102,8 @@ Once the server is running, you can interact with the API using tools like Postm
 }
 ```
 
-# Sign-In
-- **Endpoint**: /signIn
+# login
+- **Endpoint**: /auth/login : Login with username and password to get a JWT token.
 - **Method**: POST
 - **Payload**:
 
@@ -126,14 +126,28 @@ Once the server is running, you can interact with the API using tools like Postm
 
 ### Role-Based Endpoints
 
-## Principal Routes
+## Master Routes
 
-- **Endpoint**: /principal
+- **Endpoint**: /admin/master/:id :  Get details of a master by ID."
+- **Endpoint**:  /admin/master: Get all masters.
 - **Method**: GET
 
-Teacher Routes
+## Principal Routes
 
-- **Endpoint**: /teacher/dashboard
+- **Endpoint**: /admin/principal/:id :  Get details of a principal by ID."
+- **Endpoint**:  /admin/principal: Get all principals.
+- **Method**: GET
+
+## Teacher Routes
+
+- **Endpoint**: /admin/teacher/:id :  Get details of a teacher by ID.
+- **Endpoint**:  /admin/teacher: Get all teachers.
+- **Method**: GET
+
+## student Routes
+
+- **Endpoint**: /admin/student/:id :  Get details of a student by ID.
+- **Endpoint**:  /admin/student: Get all students.
 - **Method**: GET
 
 ## Folder Structure
@@ -141,7 +155,7 @@ Teacher Routes
 /SchoolERP-API
  ├── /config // Configuration files
  ├── /controllers // Logic for handling requests
- ├── /models // Mongoose models (User, etc.)
+ ├── /models // Mongoose models (adminModel, etc.)
  ├── /routes // Express.js routes for authentication and user management
  ├── index.js // Main entry point of the application
  └── package.json // Project dependencies and scripts
